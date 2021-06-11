@@ -27,8 +27,9 @@ int main()
 			printf("1-linear\n2-binary \nenter search : ");
 			scanf("%d", &choice);
 			printf("enter the number to find its position : ");
-				scanf("%d", &key);
-			if (choice == 1){
+			scanf("%d", &key);
+			if (choice == 1)
+			{
 				res = linear_search(arr, n, key);
 				if (res == -1)
 					printf("there is no occurance of %d\n", key);
@@ -36,7 +37,7 @@ int main()
 				else
 					printf("the position of %d in the given list is %d \n", key, res + 1);
 			}
-			else if(choice==2)
+			else if (choice == 2)
 			{
 				bubble_sort(arr, n);
 				for (j = 0; j < n; j++)
@@ -78,31 +79,27 @@ int linear_search(int arr[], int n, int key)
 	return -1;
 }
 
-int binarysearch(int arr[],int size)
+int binary_search(int arr[], int size, int key)
 {
-	int middle,first,last,key;
-	printf("enter key : ");
-		scanf("%d",&key);
-	first=0;
-	last=size-1;
-	middle=size/2;
-	while(first<=last)
+	int middle, first, last;
+	first = 0;
+	last = size - 1;
+	middle = size / 2;
+	while (first <= last)
 	{
-		if(key<arr[middle])
+		if (key < arr[middle])
 		{
-			last=middle;
+			last = middle;
 		}
-		else if(key>arr[middle])
+		else if (key > arr[middle])
 		{
-			first=middle+1;
+			first = middle + 1;
 		}
-		else 
-			return middle+1;
-		middle=(first+last)/2;
-
+		else
+			return middle;
+		middle = (first + last) / 2;
 	}
 	return -1;
-	
 }
 void bubble_sort(int arr[], int n)
 {
@@ -133,9 +130,16 @@ enter number 4 : 5
 enter search : 1
 enter the number to find its position : 4
 the position of 4 in the given list is 3 
-do you want to continue with other search method press 1 else press other numbers1
+do you want to continue with other search method press 1 else press other numbers3
+
 1-linear
 2-binary
 enter search : 2
-enter the number to find its position : 2
+enter the number to find its position : 4
+2
+3
+4
+5
+the position of 4 in the given list is 3
+
 */
