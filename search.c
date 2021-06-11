@@ -78,28 +78,31 @@ int linear_search(int arr[], int n, int key)
 	return -1;
 }
 
-int binary_search(int arr[], int n, int key)
+int binarysearch(int arr[],int size)
 {
-	int middle, i;
-	middle = n / 2;
-	if (arr[middle] == key)
-		return middle;
-	else if (arr[middle] < key)
+	int middle,first,last,key;
+	printf("enter key : ");
+		scanf("%d",&key);
+	first=0;
+	last=size-1;
+	middle=size/2;
+	while(first<=last)
 	{
-		for (i = middle; i < n; i++)
+		if(key<arr[middle])
 		{
-			if (arr[i] == key)
-				return i;
+			last=middle;
 		}
-		return -1;
+		else if(key>arr[middle])
+		{
+			first=middle+1;
+		}
+		else 
+			return middle+1;
+		middle=(first+last)/2;
+
 	}
-	else
-		for (i = 0; i <= middle; i++)
-		{
-			if (arr[i] == key)
-				return i;
-		}
 	return -1;
+	
 }
 void bubble_sort(int arr[], int n)
 {
