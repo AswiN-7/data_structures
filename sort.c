@@ -6,6 +6,7 @@ Menu driven program that perform
 #include <stdio.h>
 void bubble_sort(int arr[], int n);
 void selection_sort(int arr[], int n);
+void insertion_sort(int arr[], int n);
 
 int main()
 {
@@ -29,7 +30,7 @@ int main()
                     arr[i] = arrg[i];
                }
                
-               printf("1-bubble sort\n2-selection sort\nenter sort : ");
+               printf("1-bubble sort\n2-selection sort\n3-insertion sort\nenter sort : ");
                scanf("%d", &choice);
                if (choice == 1)
                {
@@ -43,7 +44,13 @@ int main()
                     for (j = 0; j < n; j++)
                          printf("%d\n", arr[j]);
                }
-
+               else if (choice == 3)
+               {
+                    insertion_sort(arr, n);
+                    for (j = 0; j < n; j++)
+                         printf("%d\n", arr[j]);
+               }
+               
                else
                {
                     printf("enter correct choice\n\n");
@@ -90,9 +97,21 @@ void selection_sort(int arr[], int n)
                if (arr[min] > arr[j])
                     min = j;
           }
-
           temp = arr[i];
           arr[i] = arr[min];
           arr[min] = temp;
+     }
+}
+
+void insertion_sort(int arr[], int n){
+     int key, insert;
+     for(int i=1;i<n;i++){
+          key = arr[i];
+          insert = i-1;
+          while(insert>=0 && arr[insert]>key){
+               arr[insert+1] = arr[insert];
+               insert--;
+          }
+          arr[insert+1] = key;
      }
 }
